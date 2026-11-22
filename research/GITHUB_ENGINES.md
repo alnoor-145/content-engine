@@ -25,8 +25,11 @@ Research notes from November 2026. These are the projects this engine builds on 
 | Motion (Framer Motion) | `motiondivision/motion` | React UI animation |
 | mo.js | `mojs/mojs` | Bursts and shape effects |
 | three.js / React Three Fiber | `mrdoob/three.js`, `pmndrs/react-three-fiber` | 3D. Wrapped by `@remotion/three` (installed) |
-| Rough.js | `rough-stuff/rough` | Hand-drawn sketch look |
-| flubber | `veltman/flubber` | Shape morphing |
+| Rough.js | `rough-stuff/rough` | Hand-drawn sketch look. **Used in `RoughSketch`** |
+| flubber | `veltman/flubber` | Shape morphing (not needed: `@remotion/paths` `interpolatePath` covers it in `MorphShapes`) |
+| KaTeX | `KaTeX/KaTeX` | Fast LaTeX math rendering. **Used in `Equation`** |
+| d3-geo + topojson + world-atlas | `d3/d3-geo`, `topojson/world-atlas` | Map projections and Natural Earth country shapes (public domain). **Used in `MapRoute`, `MapHeatmap`** |
+| @remotion/noise | `remotion-dev/remotion` | Perlin/simplex noise. **Used in `Patterns`, `PaperCutout`, `VoxelWorld`** |
 
 ## Templates and examples to learn from
 

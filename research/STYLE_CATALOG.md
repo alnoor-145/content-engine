@@ -4,9 +4,12 @@ Each style lists the video use case it fits best and how the engine covers it:
 
 - **✅ `TemplateId`**: built and registered in Remotion Studio. Render it for any format (`YouTube-`, `Short-`, `FB-Square-`, `FB-Feed-`).
 - **🔧 `TemplateId` + props**: covered by an existing template with different props or theme.
-- **🗺️ planned**: not built yet. The "Tool" column names the library to build it with (already installed unless marked *external*).
+- **🗺️ planned**: not built yet.
+- ***external* / manual**: made outside code (drawing software or your own footage), then brought into a video.
 
 Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
+
+**Coverage: 96 of 100 styles** (73 ✅ built, 23 🔧 by settings). Not covered by code: #80 match cut (edit your own footage), #94 Rive (needs a `.riv` file from the Rive editor), #95 frame-by-frame and #96 rotoscope (drawn by hand in Krita/OpenToonz).
 
 ## A. Typography (1–15)
 
@@ -23,9 +26,9 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 9 | Scramble / decode text | Mystery, hacking, reveals | ✅ `ScrambleText` |
 | 10 | Mask-reveal text | Premium brand intros | ✅ `MaskReveal` |
 | 11 | Stroke-draw lettering | Handwritten titles | 🔧 `LineDraw` with letter paths |
-| 12 | 3D extruded text | Gaming, trailers | 🗺️ planned (`@remotion/three` + drei `Text3D`) |
+| 12 | 3D extruded text | Gaming, trailers | ✅ `ExtrudedText` |
 | 13 | Highlight / marker sweep | Educational emphasis | ✅ `HighlightText` |
-| 14 | Text on path | Playful, retro | 🗺️ planned (`@remotion/paths`) |
+| 14 | Text on path | Playful, retro, badges | ✅ `TextOnPath` (`circle` or `wave`) |
 | 15 | Big number + label | Stats, facts | ✅ `StatCounter` |
 
 ## B. Explainer & educational (16–30)
@@ -39,14 +42,14 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 20 | Comparison / versus split | A vs B, before/after | ✅ `Comparison` |
 | 21 | Top-N listicle reveal | "Top 5 ...", rankings | ✅ `ListReveal` |
 | 22 | Step-by-step tutorial cards | How-to guides | 🔧 `ListReveal` (numbered) |
-| 23 | Math / equation animation | STEM teaching | 🗺️ *external*: Manim or Motion Canvas |
+| 23 | Math / equation animation | STEM teaching | ✅ `Equation` (LaTeX via KaTeX; Manim for advanced math) |
 | 24 | Code walkthrough | Programming channels | ✅ `CodeBlock` |
-| 25 | Map route animation | Travel, geography, history | 🗺️ planned (SVG maps + `@remotion/paths`) |
+| 25 | Map route animation | Travel, geography, history | ✅ `MapRoute` |
 | 26 | Icon-driven explainer | Social posts, quick facts | 🔧 `ListReveal` with emoji/icons |
-| 27 | Character explainer (2D rig) | Storytelling | 🗺️ planned (Lottie/Rive characters) |
-| 28 | Paper cut-out / collage | Craft, kids, storytelling | 🗺️ planned |
-| 29 | Chalkboard | Education, nostalgic | 🔧 `LineDraw` + chalk theme |
-| 30 | Blueprint / technical drawing | Engineering, architecture | 🔧 `LineDraw` + blue theme |
+| 27 | Character explainer (2D rig) | Storytelling | 🔧 `LottieScene` with a character `.json` |
+| 28 | Paper cut-out / collage | Craft, kids, storytelling | ✅ `PaperCutout` |
+| 29 | Chalkboard | Education, nostalgic | 🔧 `LineDraw` (`paper: "chalkboard"`) |
+| 30 | Blueprint / technical drawing | Engineering, architecture | 🔧 `LineDraw` (`paper: "blueprint"`) |
 
 ## C. Data & infographics (31–42)
 
@@ -57,9 +60,9 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 33 | Counting numbers | Milestones, statistics | ✅ `StatCounter` |
 | 34 | Line chart draw | Trends, prices, growth | ✅ `LineChart` |
 | 35 | Pie / donut fill | Shares, percentages | ✅ `DonutChart` |
-| 36 | Progress bars / meters | Goals, ratings | 🔧 `BarChart` single bar |
+| 36 | Progress bars / meters | Goals, ratings | 🔧 `BarChart` single bar / `SoftUI` dial |
 | 37 | Pictogram / icon arrays | Population, "1 in 10" | ✅ `Pictogram` |
-| 38 | Map heatmap | Country stats | 🗺️ planned |
+| 38 | Map heatmap | Country stats | ✅ `MapHeatmap` |
 | 39 | Animated table / leaderboard | Rankings, sports | 🔧 `ListReveal` |
 | 40 | Dashboard / KPI tiles | Business, finance updates | 🔧 `StatCounter` grid |
 | 41 | Scrolling news ticker | News, updates | ✅ `NewsTicker` |
@@ -69,22 +72,22 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 
 | # | Style | Best for | Engine |
 |---|---|---|---|
-| 43 | Geometric shape animation | Intros, transitions | 🔧 `Isometric` / `@remotion/shapes` |
+| 43 | Geometric shape animation | Intros, transitions | 🔧 `MorphShapes` / `Isometric` |
 | 44 | Liquid / blob motion | Lifestyle, beauty, music | ✅ `LiquidBlob` |
 | 45 | Particle systems | Tech, sci-fi, ambient | ✅ `Particles` |
 | 46 | Isometric 3D-in-2D | Tech, business, process | ✅ `Isometric` |
 | 47 | Gradient mesh / aurora backgrounds | Every background | ✅ `Background` component |
-| 48 | Morphing shapes | Logo stings, transitions | 🗺️ planned (flubber, *external*) |
+| 48 | Morphing shapes | Logo stings, transitions | ✅ `MorphShapes` |
 | 49 | Line art / minimal strokes | Premium, minimal brands | 🔧 `LineDraw` |
-| 50 | Grid / Bauhaus / Swiss | Design, art channels | 🗺️ planned |
-| 51 | Op-art / looping illusion | Satisfying loops | 🗺️ planned |
-| 52 | Noise / generative art | Ambient, music visuals | 🗺️ planned (`@remotion/noise`, add later) |
+| 50 | Grid / Bauhaus / Swiss | Design, art channels | ✅ `Patterns` (`mode: "bauhaus"`) |
+| 51 | Op-art / looping illusion | Satisfying loops | ✅ `Patterns` (`mode: "opart"`) |
+| 52 | Noise / generative art | Ambient, music visuals | ✅ `Patterns` (`mode: "generative"`) |
 | 53 | Audio visualizer / waveform | Podcasts, music | ✅ `AudioWave` |
 | 54 | Neon / synthwave | Retro, gaming, music | 🔧 `GlitchText` + neon theme |
 | 55 | Glassmorphism UI | Tech, apps | 🔧 `Comparison`/`QuoteCard` glass cards |
-| 56 | Neumorphism | Product UI demos | 🗺️ planned |
-| 57 | Duotone | Posters, editorial | 🗺️ planned (CSS filters) |
-| 58 | Halftone / risograph | Retro editorial | 🗺️ planned |
+| 56 | Neumorphism | Product UI demos | ✅ `SoftUI` |
+| 57 | Duotone | Posters, editorial | ✅ `PhotoFX` (`mode: "duotone"`) |
+| 58 | Halftone / risograph | Retro editorial | ✅ `PhotoFX` (`mode: "halftone"`) |
 
 ## E. 3D & depth (59–68)
 
@@ -92,14 +95,14 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 |---|---|---|---|
 | 59 | 3D hero object | Product shots, intros | ✅ `ThreeDHero` |
 | 60 | Low-poly 3D | Gaming, geography | 🔧 `ThreeDHero` (flat shading) |
-| 61 | 2.5D parallax photo | Documentaries, history | 🗺️ planned (layered images) |
-| 62 | Camera fly-through | Architecture, worlds | 🗺️ planned (`@remotion/three` camera) |
-| 63 | 3D device mockup | App/website showcases | 🗺️ planned (GLTF models) |
-| 64 | Claymation look | Kids, playful | 🗺️ planned (3D + soft lighting) |
+| 61 | 2.5D parallax photo | Documentaries, history | ✅ `PhotoFX` (`mode: "parallax"`) |
+| 62 | Camera fly-through | Architecture, worlds | ✅ `VoxelWorld` |
+| 63 | 3D device mockup | App/website showcases | ✅ `DeviceMockup` |
+| 64 | Claymation look | Kids, playful | ✅ `ClayScene` |
 | 65 | 3D globe | News, travel, geopolitics | ✅ `Globe` |
-| 66 | Voxel | Gaming, Minecraft-adjacent | 🗺️ planned |
+| 66 | Voxel | Gaming, Minecraft-adjacent | ✅ `VoxelWorld` |
 | 67 | Abstract 3D loops | Satisfying, ambient | 🔧 `ThreeDHero` |
-| 68 | Exploded view | Tech, products | 🗺️ planned |
+| 68 | Exploded view | Tech, products | ✅ `ExplodedView` |
 
 ## F. Transitions & editing (69–80)
 
@@ -110,24 +113,26 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 71 | Wipe | Before/after, chapters | ✅ `TransitionsReel` |
 | 72 | Flip | Reveals | ✅ `TransitionsReel` |
 | 73 | Clock wipe | Retro, timing themes | ✅ `TransitionsReel` |
-| 74 | Zoom punch-in | Talking-head energy | 🗺️ planned |
-| 75 | Whip pan / motion blur | Vlogs, travel | 🗺️ planned (`@remotion/motion-blur`, add later) |
-| 76 | Shape / logo mask transition | Branded channels | 🗺️ planned |
+| 74 | Zoom punch-in | Talking-head energy | ✅ `PhotoFX` (`mode: "punchin"`) |
+| 75 | Whip pan / motion blur | Vlogs, travel | ✅ `TransitionsReel2` (`whipPan`) |
+| 76 | Shape / logo mask transition | Branded channels | ✅ `TransitionsReel2` (`iris` circle/star/diamond) |
 | 77 | Glitch transition | Tech, gaming | 🔧 `GlitchText` |
-| 78 | Ink / paint splash | Art, lifestyle | 🗺️ planned (Lottie) |
-| 79 | Light leak / film burn | Cinematic vlogs | 🗺️ planned (overlay video assets) |
+| 78 | Ink / paint splash | Art, lifestyle | ✅ `TransitionsReel2` (`inkSplash`) |
+| 79 | Light leak / film burn | Cinematic vlogs | ✅ `TransitionsReel2` (`lightLeak`) |
 | 80 | Match cut | Storytelling | manual (edit with your footage) |
+
+All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 
 ## G. Social, branding & UI (81–92)
 
 | # | Style | Best for | Engine |
 |---|---|---|---|
-| 81 | Logo sting / reveal | Channel branding | 🔧 `TitleCard` |
+| 81 | Logo sting / reveal | Channel branding | 🔧 `TitleCard` / `MorphShapes` |
 | 82 | Subscribe / like CTA | End of every YouTube video | ✅ `SubscribeCTA` |
 | 83 | End screen | YouTube end cards | ✅ `EndScreen` |
 | 84 | Social comment / tweet card | Reactions, commentary | 🔧 `QuoteCard` |
 | 85 | Chat / messaging animation | Stories, drama, skits | ✅ `ChatStory` |
-| 86 | Phone UI / app mockup | Tech reviews | 🔧 `ChatStory` phone frame |
+| 86 | Phone UI / app mockup | Tech reviews | ✅ `DeviceMockup` (also `ChatStory`) |
 | 87 | Notification pop-ups | Hooks, attention | ✅ `NotificationPop` |
 | 88 | Progress / chapter bar | Long videos | ✅ `ChapterBar` |
 | 89 | Countdown | Launches, Top-N | 🔧 `StatCounter` (counting down) |
@@ -139,31 +144,34 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 
 | # | Style | Best for | Engine |
 |---|---|---|---|
-| 93 | Lottie animations | Icons, characters, micro-interactions | 🗺️ planned (`@remotion/lottie` installed) |
-| 94 | Rive state-machine characters | Interactive mascots | 🗺️ planned (`@remotion/rive`, add later) |
+| 93 | Lottie animations | Icons, characters, micro-interactions | ✅ `LottieScene` |
+| 94 | Rive state-machine characters | Interactive mascots | 🗺️ planned (needs a `.riv` file; add `@remotion/rive`) |
 | 95 | Frame-by-frame (cel) | Premium storytelling | *external*: draw in Krita/OpenToonz, import PNG sequence |
 | 96 | Rotoscope | Music videos | *external* |
-| 97 | Cut-out puppet (Moho/Duik style) | Story channels | *external*: export to Lottie, play via #93 |
-| 98 | Pixel art | Gaming, retro | 🗺️ planned (`imageRendering: pixelated`) |
-| 99 | Stop-motion look | Crafts, kids | 🗺️ planned (step easing on any template) |
-| 100 | Hand-drawn / sketchy (Rough.js) | Casual explainers | 🗺️ planned (roughjs, add later) |
+| 97 | Cut-out puppet (Moho/Duik style) | Story channels | 🔧 export the rig to Lottie, play in `LottieScene` |
+| 98 | Pixel art | Gaming, retro | ✅ `PixelArt` |
+| 99 | Stop-motion look | Crafts, kids | ✅ `ClayScene` (`stepFrames: 2`) |
+| 100 | Hand-drawn / sketchy (Rough.js) | Casual explainers | ✅ `RoughSketch` |
 
 ## Choosing a style by video case
 
 | Video case | Start with |
 |---|---|
-| YouTube Short / Reel hook | `NotificationPop`, `KineticText`, `ScrambleText` → `WordCaptions` |
-| Story / drama / skit | `ChatStory`, `Typewriter` |
-| Explainer / education | `LineDraw`, `Flowchart`, `HighlightText`, `Timeline`, `ListReveal` |
-| News / facts | `NewsTicker`, `Globe`, `StatCounter`, `Pictogram`, `Typewriter` |
+| YouTube Short / Reel hook | `NotificationPop`, `KineticText`, `ScrambleText`, `ExtrudedText` → `WordCaptions` |
+| Story / drama / skit | `ChatStory`, `PaperCutout`, `ClayScene`, `LottieScene` |
+| Explainer / education | `RoughSketch`, `LineDraw`, `Flowchart`, `HighlightText`, `Timeline`, `ListReveal` |
+| Math / science | `Equation`, `LineChart`, `ExplodedView` |
+| News / facts | `NewsTicker`, `MapHeatmap`, `Globe`, `StatCounter`, `Pictogram` |
+| History / travel / geography | `MapRoute`, `MapHeatmap`, `Timeline`, `PhotoFX` (parallax, Ken Burns) |
 | Data / statistics | `BarChartRace`, `LineChart`, `DonutChart`, `BarChart`, `Pictogram` |
-| Motivation / quotes | `QuoteCard`, `HighlightText`, `KineticText`, `LiquidBlob` |
-| Tech / gaming / coding | `CodeBlock`, `GlitchText`, `Particles`, `ThreeDHero`, `Isometric` |
-| Podcast / music clips | `AudioWave` |
+| Motivation / quotes | `QuoteCard`, `HighlightText`, `KineticText`, `LiquidBlob`, `PhotoFX` (duotone) |
+| Tech / gaming / coding | `CodeBlock`, `DeviceMockup`, `GlitchText`, `PixelArt`, `VoxelWorld`, `ThreeDHero` |
+| App / product review | `DeviceMockup`, `ExplodedView`, `SoftUI`, `Comparison` |
+| Podcast / music clips | `AudioWave`, `Patterns` (generative / op-art) |
 | Comparison / review | `Comparison`, `BarChart`, `DonutChart` |
-| Long videos | `ChapterBar` between sections, `EndScreen` at the end |
-| Channel branding | `TitleCard`, `MaskReveal`, `SplitFlap`, `SubscribeCTA`, `TransitionsReel` |
+| Long videos | `ChapterBar` between sections, `TransitionsReel2` between scenes, `EndScreen` at the end |
+| Channel branding | `TitleCard`, `MorphShapes`, `TextOnPath`, `MaskReveal`, `SplitFlap`, `SubscribeCTA` |
 
 ## Bangla (বাংলা) support
 
-Every template renders Bangla text with the **Hind Siliguri** font, loaded automatically. Per-character effects (`Typewriter`, `ScrambleText`, `SplitFlap`) split text by grapheme, so conjuncts like ক্ষ, স্ত্র and ন্ট stay intact. Mixed Bangla + English text works too.
+Every template renders Bangla text with the **Hind Siliguri** font, loaded automatically. Per-character effects (`Typewriter`, `ScrambleText`, `SplitFlap`) split text by grapheme, so conjuncts like ক্ষ, স্ত্র and ন্ট stay intact. Mixed Bangla + English text works too. Display fonts that have no Bangla glyphs (Caveat in `RoughSketch`, Press Start 2P in `PixelArt`) fall back to Hind Siliguri for Bangla characters.

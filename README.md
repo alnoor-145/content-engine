@@ -4,15 +4,18 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
 
 ## What's inside
 
-- **35 animation style templates** covering 66 of the 100 catalogued styles (44 directly, 22 by changing a template's settings):
+- **53 animation style templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings):
 
   | Group | Templates |
   |---|---|
-  | Typography | `KineticText`, `Typewriter`, `GlitchText`, `WordCaptions`, `TitleCard`, `QuoteCard`, `ScrambleText`, `MaskReveal`, `HighlightText`, `SplitFlap` |
-  | Explainers | `LineDraw` (whiteboard / chalkboard / blueprint), `Flowchart`, `Timeline`, `ListReveal`, `Comparison`, `CodeBlock` |
-  | Data | `BarChart`, `BarChartRace`, `LineChart`, `DonutChart`, `Pictogram`, `StatCounter` |
-  | Social & branding | `SubscribeCTA`, `EndScreen`, `ChatStory`, `NotificationPop`, `NewsTicker`, `ChapterBar`, `TransitionsReel` |
-  | Abstract & 3D | `Particles`, `LiquidBlob`, `Isometric`, `ThreeDHero`, `Globe` |
+  | Typography | `KineticText`, `Typewriter`, `GlitchText`, `WordCaptions`, `TitleCard`, `QuoteCard`, `ScrambleText`, `MaskReveal`, `HighlightText`, `SplitFlap`, `ExtrudedText`, `TextOnPath` |
+  | Explainers | `LineDraw` (whiteboard / chalkboard / blueprint), `RoughSketch` (hand-drawn), `Flowchart`, `Timeline`, `ListReveal`, `Comparison`, `CodeBlock`, `Equation` (LaTeX math) |
+  | Maps & data | `MapRoute`, `MapHeatmap`, `Globe`, `BarChart`, `BarChartRace`, `LineChart`, `DonutChart`, `Pictogram`, `StatCounter` |
+  | Social & branding | `SubscribeCTA`, `EndScreen`, `ChatStory`, `NotificationPop`, `NewsTicker`, `ChapterBar`, `DeviceMockup`, `SoftUI` |
+  | Transitions | `TransitionsReel` (fade, slide, wipe, flip, clock), `TransitionsReel2` (iris/star mask, whip pan, ink splash, light leak) |
+  | Abstract & shapes | `Particles`, `LiquidBlob`, `Isometric`, `MorphShapes`, `Patterns` (Bauhaus, op-art, generative) |
+  | 3D | `ThreeDHero`, `VoxelWorld` (fly-through), `ExplodedView`, `ClayScene` (claymation / stop-motion) |
+  | Illustration & photo | `PaperCutout`, `PixelArt`, `LottieScene`, `PhotoFX` (Ken Burns, punch-in, duotone, halftone, 2.5D parallax) |
   | Audio | `AudioWave` (podcast audiogram that reacts to your voiceover) |
 
 - **4 output formats** for every template: YouTube 16:9 (1920×1080), Shorts/Reels 9:16 (1080×1920), Facebook 1:1 (1080×1080) and Facebook feed 4:5 (1080×1350)
@@ -41,6 +44,12 @@ Or render a template straight from Studio. Composition IDs are `<Format>-<Templa
 
 See [`content/videos/002-bangla-demo`](content/videos/002-bangla-demo/video.json) for a Bangla example.
 
+### Your own photos and Lottie animations
+
+- `PhotoFX`: put an image in `public/` and set `"src": "my-photo.jpg"` and `"mode"` (`kenburns`, `punchin`, `duotone`, `halftone` or `parallax`).
+- `LottieScene`: download a free animation `.json` from LottieFiles (or export from After Effects with Bodymovin), put it in `public/` and set `"src": "my-animation.json"`.
+- `MapRoute` / `MapHeatmap`: country names follow Natural Earth (e.g. `"Bangladesh"`, `"United States of America"`).
+
 ### Audiogram with your own voice
 
 Put your audio file in `public/` (e.g. `public/episode1.mp3`), then in `video.json` use the `AudioWave` template with `"audioSrc": "episode1.mp3"` and `"durationSeconds"` set to the audio length. `npm run demo-audio` regenerates the bundled `public/demo-beat.wav` test file.
@@ -53,11 +62,13 @@ src/
   brand/fonts.ts        Google Fonts loading (Poppins, Inter, Hind Siliguri for Bangla)
   formats.ts            platform sizes
   components/           shared pieces (Background, LowerThird)
-  lib/                  helpers (responsive sizing, Bangla-safe text splitting)
+  lib/                  helpers (responsive sizing, Bangla-safe text, world map data)
   templates/            one file per animation style + registry.ts
+  transitions/          custom scene transitions (iris, whip pan, ink splash, light leak)
+  assets/               bundled demo data (Lottie demo)
   Root.tsx              registers every template × every format
 content/videos/<slug>/  video.json, script.md, assets/ per video
-public/                 audio/images your videos use (demo-beat.wav included)
+public/                 audio/images your videos use (demo-beat.wav, demo-photo.jpg included)
 scripts/                new-video, render and demo-audio CLIs
 research/               style catalog and GitHub research
 ```

@@ -38,6 +38,24 @@ import { Pictogram, pictogramSchema } from "./Pictogram";
 import { ScrambleText, scrambleTextSchema } from "./ScrambleText";
 import { SplitFlap, splitFlapSchema } from "./SplitFlap";
 import { SubscribeCTA, subscribeCtaSchema } from "./SubscribeCTA";
+import { ClayScene, claySceneSchema } from "./ClayScene";
+import { DeviceMockup, deviceMockupSchema } from "./DeviceMockup";
+import { Equation, equationSchema } from "./Equation";
+import { ExplodedView, explodedViewSchema } from "./ExplodedView";
+import { ExtrudedText, extrudedTextSchema } from "./ExtrudedText";
+import { LottieScene, lottieSceneSchema } from "./LottieScene";
+import { MapHeatmap, mapHeatmapSchema } from "./MapHeatmap";
+import { MapRoute, mapRouteSchema } from "./MapRoute";
+import { MorphShapes, morphShapesSchema } from "./MorphShapes";
+import { PaperCutout, paperCutoutSchema } from "./PaperCutout";
+import { Patterns, patternsSchema } from "./Patterns";
+import { PhotoFX, photoFXSchema } from "./PhotoFX";
+import { PixelArt, pixelArtSchema } from "./PixelArt";
+import { RoughSketch, roughSketchSchema } from "./RoughSketch";
+import { SoftUI, softUISchema } from "./SoftUI";
+import { TextOnPath, textOnPathSchema } from "./TextOnPath";
+import { TRANSITION2_FRAMES, TransitionsReel2, transitionsReel2Schema } from "./TransitionsReel2";
+import { VoxelWorld, voxelWorldSchema } from "./VoxelWorld";
 
 export type TemplateDef = {
   id: string;
@@ -158,4 +176,51 @@ export const TEMPLATES: TemplateDef[] = [
     defaultProps: { title: "Worldwide audience", subtitle: "Dhaka → London → New York → Dubai", connect: true, markers: [{ lat: 23.8, lon: 90.4 }, { lat: 51.5, lon: -0.1 }, { lat: 40.7, lon: -74 }, { lat: 25.2, lon: 55.3 }] } }),
   def({ id: "AudioWave", styles: [53, 92], component: AudioWave, schema: audioWaveSchema, duration: (p) => Math.round(p.durationSeconds * 30),
     defaultProps: { title: "The Creator Podcast", subtitle: "Episode 1 · Starting from zero", audioSrc: "", durationSeconds: 6 } }),
+
+  // ── Batch 3: text, maps, math, illustration looks ─────────────────────
+  def({ id: "ExtrudedText", styles: [12], component: ExtrudedText, schema: extrudedTextSchema, duration: () => 150,
+    defaultProps: { lines: ["Level", "Up"], depth: 22, faceColor: "#FFD84D", sideColor: "#C2410C" } }),
+  def({ id: "TextOnPath", styles: [14], component: TextOnPath, schema: textOnPathSchema, duration: () => 180,
+    defaultProps: { text: "SUBSCRIBE FOR MORE MOTION GRAPHICS", centerText: "NEW EVERY WEEK", shape: "circle", speed: 1.2 } }),
+  def({ id: "MapRoute", styles: [25], component: MapRoute, schema: mapRouteSchema, duration: (p) => 20 + (p.stops.length - 1) * p.framesPerLeg + 50,
+    defaultProps: { title: "From Dhaka to the world", view: "route", framesPerLeg: 40, stops: [
+      { name: "Dhaka", lat: 23.81, lon: 90.41 }, { name: "Dubai", lat: 25.2, lon: 55.27 }, { name: "Istanbul", lat: 41.01, lon: 28.98 }, { name: "London", lat: 51.51, lon: -0.13 }] } }),
+  def({ id: "MapHeatmap", styles: [38], component: MapHeatmap, schema: mapHeatmapSchema, duration: (p) => 15 + Object.keys(p.values).length * 4 + 15 + 75,
+    defaultProps: { title: "Viewers by country (demo data)", unit: "K", zoomToData: false, values: {
+      Bangladesh: 120, India: 64, "United States of America": 38, "United Kingdom": 22, "Saudi Arabia": 30, "United Arab Emirates": 18, Malaysia: 14, Canada: 9, Australia: 7, Italy: 6, Qatar: 8, Pakistan: 11 } } }),
+  def({ id: "Equation", styles: [23], component: Equation, schema: equationSchema, duration: (p) => 10 + p.steps.length * p.framesPerStep + 60,
+    defaultProps: { title: "Pythagoras in 4 steps", framesPerStep: 40, caption: "The longest side is 5", steps: ["a^2 + b^2 = c^2", "3^2 + 4^2 = c^2", "9 + 16 = c^2", "c = \\sqrt{25} = 5"] } }),
+  def({ id: "RoughSketch", styles: [100], component: RoughSketch, schema: roughSketchSchema, duration: (p) => 15 + (p.boxes.length * 2 - 1) * p.framesPerShape + 45,
+    defaultProps: { title: "How a video goes viral", framesPerShape: 18, boxes: ["Hook", "Watch time", "Shares", "Algorithm"] } }),
+  def({ id: "PaperCutout", styles: [28], component: PaperCutout, schema: paperCutoutSchema, duration: () => 150,
+    defaultProps: { title: "Once upon a time…", subtitle: "A story in paper", palette: "sunset" } }),
+  def({ id: "PixelArt", styles: [98], component: PixelArt, schema: pixelArtSchema, duration: () => 150,
+    defaultProps: { title: "LEVEL 1", subtitle: "PRESS START", coins: 6 } }),
+
+  // ── Batch 3: shapes, patterns, UI, photo ──────────────────────────────
+  def({ id: "MorphShapes", styles: [48], component: MorphShapes, schema: morphShapesSchema, duration: (p) => p.labels.length * p.framesPerShape,
+    defaultProps: { labels: ["Idea", "Spark", "Love it", "Grow", "Build", "Launch"], framesPerShape: 36 } }),
+  def({ id: "Patterns", styles: [50, 51, 52], component: Patterns, schema: patternsSchema, duration: () => 180,
+    defaultProps: { mode: "bauhaus", title: "Design matters", subtitle: "Form follows function" } }),
+  def({ id: "SoftUI", styles: [56], component: SoftUI, schema: softUISchema, duration: () => 130,
+    defaultProps: { title: "Focus mode", value: 78, label: "goal reached", toggleLabel: "Notifications off" } }),
+  def({ id: "PhotoFX", styles: [57, 58, 61, 74], component: PhotoFX, schema: photoFXSchema, duration: () => 150,
+    defaultProps: { src: "demo-photo.jpg", mode: "parallax", title: "Chapter 1", subtitle: "Where it all began" } }),
+
+  // ── Batch 3: 3D ───────────────────────────────────────────────────────
+  def({ id: "VoxelWorld", styles: [62, 66], component: VoxelWorld, schema: voxelWorldSchema, duration: () => 240,
+    defaultProps: { title: "Build your world", subtitle: "Block by block", seed: "creator" } }),
+  def({ id: "DeviceMockup", styles: [63, 86], component: DeviceMockup, schema: deviceMockupSchema, duration: (p) => 40 + p.feed.length * 25 + 50,
+    defaultProps: { appTitle: "My Channel", caption: "Watch on any screen", feed: ["Episode 1: Start", "Top 5 tools", "Behind the scenes", "Q&A live", "What's next"] } }),
+  def({ id: "ExplodedView", styles: [68], component: ExplodedView, schema: explodedViewSchema, duration: () => 150,
+    defaultProps: { title: "Inside a smartphone", layers: ["Glass", "Display", "Battery", "Logic board", "Back cover"] } }),
+  def({ id: "ClayScene", styles: [64, 99], component: ClayScene, schema: claySceneSchema, duration: () => 180,
+    defaultProps: { title: "Made by hand", subtitle: "Stop-motion vibes", stepFrames: 2 } }),
+
+  // ── Batch 3: transitions & Lottie ─────────────────────────────────────
+  def({ id: "TransitionsReel2", styles: [75, 76, 78, 79], component: TransitionsReel2, schema: transitionsReel2Schema,
+    duration: (p) => p.scenes.length * p.framesPerScene - (p.scenes.length - 1) * TRANSITION2_FRAMES,
+    defaultProps: { scenes: ["Circle iris", "Star mask", "Whip pan", "Ink splash", "Light leak", "Diamond", "Done"], framesPerScene: 50 } }),
+  def({ id: "LottieScene", styles: [27, 93, 97], component: LottieScene, schema: lottieSceneSchema, duration: () => 150,
+    defaultProps: { src: "", title: "Lottie animations", subtitle: "Drop any LottieFiles .json into public/", playbackRate: 1 } }),
 ];
