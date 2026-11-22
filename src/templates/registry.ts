@@ -56,6 +56,17 @@ import { SoftUI, softUISchema } from "./SoftUI";
 import { TextOnPath, textOnPathSchema } from "./TextOnPath";
 import { TRANSITION2_FRAMES, TransitionsReel2, transitionsReel2Schema } from "./TransitionsReel2";
 import { VoxelWorld, voxelWorldSchema } from "./VoxelWorld";
+import { Bars3D, bars3DSchema } from "./Bars3D";
+import { CardCarousel, cardCarouselSchema } from "./CardCarousel";
+import { Celebration, celebrationSchema } from "./Celebration";
+import { CityNight, cityNightSchema } from "./CityNight";
+import { Countdown, countdownSchema } from "./Countdown";
+import { DNAHelix, dnaHelixSchema } from "./DNAHelix";
+import { EidGreeting, eidGreetingSchema } from "./EidGreeting";
+import { Mascot, mascotSchema } from "./Mascot";
+import { SolarSystem, solarSystemSchema } from "./SolarSystem";
+import { Text3D, text3DSchema } from "./Text3D";
+import { Tunnel3D, tunnel3DSchema } from "./Tunnel3D";
 
 export type TemplateDef = {
   id: string;
@@ -226,4 +237,35 @@ export const TEMPLATES: TemplateDef[] = [
     defaultProps: { scenes: ["Circle iris", "Star mask", "Whip pan", "Ink splash", "Light leak", "Diamond", "Done"], framesPerScene: 50 } }),
   def({ id: "LottieScene", styles: [27, 93, 97], component: LottieScene, schema: lottieSceneSchema, duration: () => 150,
     defaultProps: { src: "", title: "Lottie animations", subtitle: "Drop any LottieFiles .json into public/", playbackRate: 1 } }),
+
+  // ── Batch 4: more 3D ──────────────────────────────────────────────────
+  def({ id: "Text3D", styles: [12, 81], component: Text3D, schema: text3DSchema, duration: () => 150,
+    defaultProps: (b) => ({ text: b.name.toUpperCase(), subtitle: b.platform === "youtube" ? b.handle : "FACEBOOK", faceColor: "#FFD84D", sideColor: "#FF4D6D" }) }),
+  def({ id: "SolarSystem", styles: [59, 65], component: SolarSystem, schema: solarSystemSchema, duration: () => 240,
+    defaultProps: { title: "Our Solar System", subtitle: "8 planets, 1 star", speed: 1 } }),
+  def({ id: "DNAHelix", styles: [59, 67], component: DNAHelix, schema: dnaHelixSchema, duration: () => 180,
+    defaultProps: { title: "The code of life", subtitle: "DNA double helix", pairs: 34 } }),
+  def({ id: "Tunnel3D", styles: [62, 67], component: Tunnel3D, schema: tunnel3DSchema, duration: () => 180,
+    defaultProps: { title: "NEXT LEVEL", subtitle: "ENTER THE WORMHOLE", speed: 1 } }),
+  def({ id: "Bars3D", styles: [31, 59], component: Bars3D, schema: bars3DSchema, duration: (p) => 10 + p.bars.length * 5 + 140,
+    defaultProps: { title: "Views by month", unit: "K", bars: [{ label: "Jan", value: 12 }, { label: "Feb", value: 19 }, { label: "Mar", value: 15 }, { label: "Apr", value: 28 }, { label: "May", value: 36 }, { label: "Jun", value: 52 }] } }),
+  def({ id: "CardCarousel", styles: [21, 63], component: CardCarousel, schema: cardCarouselSchema, duration: (p) => 15 + p.cards.length * p.framesPerCard + 20,
+    defaultProps: { title: "5 habits of top creators", framesPerCard: 40, cards: [
+      { icon: "⏰", title: "Post on time", text: "Same day, same hour, every week" },
+      { icon: "🎣", title: "Hook in 3s", text: "Say the payoff first" },
+      { icon: "✂️", title: "Cut the fluff", text: "Every second must earn its place" },
+      { icon: "💬", title: "Reply to fans", text: "Comments grow communities" },
+      { icon: "📊", title: "Read analytics", text: "Double down on what works" }] } }),
+
+  // ── Batch 4: more 2D ──────────────────────────────────────────────────
+  def({ id: "Mascot", styles: [17, 27], component: Mascot, schema: mascotSchema, duration: (p) => 20 + p.lines.length * p.framesPerLine + 20,
+    defaultProps: { framesPerLine: 75, bodyColor: "#FF7A59", lines: ["Hi! I'm Sprout 👋", "Today we learn something cool", "Let's go!"] } }),
+  def({ id: "Celebration", styles: [45, 89], component: Celebration, schema: celebrationSchema, duration: () => 180,
+    defaultProps: { mode: "confetti", title: "1,000 Subscribers!", subtitle: "Thank you for the love ❤️" } }),
+  def({ id: "EidGreeting", styles: [28, 81], component: EidGreeting, schema: eidGreetingSchema, duration: () => 210,
+    defaultProps: (b) => ({ greeting: "ঈদ মোবারক", subtitle: "সবাইকে ঈদের শুভেচ্ছা ও অভিনন্দন", from: b.name }) }),
+  def({ id: "CityNight", styles: [17, 47], component: CityNight, schema: cityNightSchema, duration: () => 300,
+    defaultProps: { title: "A day in the city", subtitle: "From sunrise to city lights" } }),
+  def({ id: "Countdown", styles: [89], component: Countdown, schema: countdownSchema, duration: (p) => p.seconds * 30 + 50,
+    defaultProps: { label: "Premiere starts in", seconds: 10, endText: "LIVE!" } }),
 ];

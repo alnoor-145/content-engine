@@ -30,6 +30,7 @@ Research notes from November 2026. These are the projects this engine builds on 
 | KaTeX | `KaTeX/KaTeX` | Fast LaTeX math rendering. **Used in `Equation`** |
 | d3-geo + topojson + world-atlas | `d3/d3-geo`, `topojson/world-atlas` | Map projections and Natural Earth country shapes (public domain). **Used in `MapRoute`, `MapHeatmap`** |
 | @remotion/noise | `remotion-dev/remotion` | Perlin/simplex noise. **Used in `Patterns`, `PaperCutout`, `VoxelWorld`** |
+| opentype.js | `opentypejs/opentype.js` | Reads font files into letter outlines. **Used in `Text3D`** (with Poppins, OFL licence, in `public/fonts/`) |
 
 ## Templates and examples to learn from
 

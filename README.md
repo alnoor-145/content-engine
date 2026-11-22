@@ -6,7 +6,7 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
 
 ## What's inside
 
-- **53 animation style templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings):
+- **64 animation style templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings), plus extra 3D and 2D scenes:
 
   | Group | Templates |
   |---|---|
@@ -16,7 +16,8 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
   | Social & branding | `SubscribeCTA`, `EndScreen`, `ChatStory`, `NotificationPop`, `NewsTicker`, `ChapterBar`, `DeviceMockup`, `SoftUI` |
   | Transitions | `TransitionsReel` (fade, slide, wipe, flip, clock), `TransitionsReel2` (iris/star mask, whip pan, ink splash, light leak) |
   | Abstract & shapes | `Particles`, `LiquidBlob`, `Isometric`, `MorphShapes`, `Patterns` (Bauhaus, op-art, generative) |
-  | 3D | `ThreeDHero`, `VoxelWorld` (fly-through), `ExplodedView`, `ClayScene` (claymation / stop-motion) |
+  | 3D | `Text3D` (real extruded 3D letters), `ThreeDHero`, `SolarSystem`, `DNAHelix`, `Tunnel3D` (wormhole), `Bars3D`, `CardCarousel`, `VoxelWorld` (fly-through), `ExplodedView`, `ClayScene` (claymation / stop-motion) |
+  | 2D scenes | `Mascot` (talking cartoon narrator), `Celebration` (confetti / fireworks), `EidGreeting` (moon, lanterns, Bangla greeting), `CityNight` (day → night city), `Countdown` |
   | Illustration & photo | `PaperCutout`, `PixelArt`, `LottieScene`, `PhotoFX` (Ken Burns, punch-in, duotone, halftone, 2.5D parallax) |
   | Audio | `AudioWave` (podcast audiogram that reacts to your voiceover) |
 
@@ -71,7 +72,7 @@ src/
   assets/               bundled demo data (Lottie demo)
   Root.tsx              registers every template × every format
 content/videos/<slug>/  video.json, script.md, assets/ per video
-public/                 audio/images your videos use (demo-beat.wav, demo-photo.jpg included)
+public/                 audio/images your videos use (demo-beat.wav, demo-photo.jpg, fonts/ for 3D text)
 scripts/                new-video, render and demo-audio CLIs
 research/               style catalog and GitHub research
 ```

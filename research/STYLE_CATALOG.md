@@ -153,6 +153,22 @@ All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 | 99 | Stop-motion look | Crafts, kids | ✅ `ClayScene` (`stepFrames: 2`) |
 | 100 | Hand-drawn / sketchy (Rough.js) | Casual explainers | ✅ `RoughSketch` |
 
+## Extra scenes (beyond the 100)
+
+| Template | Type | Best for |
+|---|---|---|
+| `Text3D` | 3D | Channel logo / title in real extruded 3D letters (Latin text) |
+| `SolarSystem` | 3D | Space, astronomy, science |
+| `DNAHelix` | 3D | Biology, health, science |
+| `Tunnel3D` | 3D | Sci-fi, gaming, high-energy intros |
+| `Bars3D` | 3D | Data with a premium 3D look |
+| `CardCarousel` | 3D | Top-N lists, tips, product lineups (works in Bangla) |
+| `Mascot` | 2D | Talking cartoon narrator ("Sprout"), kids & explainers |
+| `Celebration` | 2D | Milestones, giveaways, results (confetti or fireworks) |
+| `EidGreeting` | 2D | Eid / Ramadan / festival greetings in Bangla |
+| `CityNight` | 2D | Calm intros, vlogs, "a day in the life" |
+| `Countdown` | 2D | Premieres, live streams, launches |
+
 ## Choosing a style by video case
 
 | Video case | Start with |
@@ -170,6 +186,9 @@ All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 | Podcast / music clips | `AudioWave`, `Patterns` (generative / op-art) |
 | Comparison / review | `Comparison`, `BarChart`, `DonutChart` |
 | Long videos | `ChapterBar` between sections, `TransitionsReel2` between scenes, `EndScreen` at the end |
+| Science / space | `SolarSystem`, `DNAHelix`, `Equation`, `ExplodedView` |
+| Festivals / milestones | `EidGreeting`, `Celebration`, `Countdown` |
+| Kids / storytelling | `Mascot`, `PaperCutout`, `ClayScene`, `CityNight` |
 | Channel branding | `TitleCard`, `MorphShapes`, `TextOnPath`, `MaskReveal`, `SplitFlap`, `SubscribeCTA` |
 
 ## Bangla (বাংলা) support
