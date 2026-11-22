@@ -1,0 +1,15 @@
+node_modules/
+out/
+dist/
+build/
+.remotion/
+*.log
+.env
+.env.*
+.DS_Store
+Thumbs.db
+desktop.ini
+# Large raw footage stays local; keep small assets in content/videos/*/assets
+content/**/raw/
+*.mov
+*.mkv
