@@ -74,6 +74,12 @@ import { MapSearch, mapSearchSchema } from "./MapSearch";
 import { ZoomChain, zoomChainSchema } from "./ZoomChain";
 import { StoryScene, storySceneSchema } from "./StoryScene";
 import { DEMO_STORY } from "../story/demo";
+import { CharacterGallery, characterGallerySchema } from "./CharacterGallery";
+import { CAST_LIBRARY } from "../story/cast";
+import { CountryHighlight, countryHighlightSchema } from "./CountryHighlight";
+import { MapArcs, mapArcsSchema } from "./MapArcs";
+import { MapTour, mapTourSchema } from "./MapTour";
+import { StormTrack, stormTrackSchema } from "./StormTrack";
 
 export type TemplateDef = {
   id: string;
@@ -301,4 +307,31 @@ export const TEMPLATES: TemplateDef[] = [
   def({ id: "StoryScene", styles: [17, 27, 4], component: StoryScene, schema: storySceneSchema,
     duration: (p) => Math.ceil(Math.max(...p.scenes.map((s) => s.end)) * 30),
     defaultProps: DEMO_STORY }),
+  def({ id: "CharacterGallery", styles: [27, 17], component: CharacterGallery, schema: characterGallerySchema,
+    duration: (p) => Math.ceil(p.characters.length * p.spotlightSeconds * 30),
+    defaultProps: { title: "আমাদের চরিত্রেরা", characters: CAST_LIBRARY, spotlightSeconds: 1.6 } }),
+
+  // ── Batch 7: more maps ────────────────────────────────────────────────
+  def({ id: "MapTour", styles: [25], component: MapTour, schema: mapTourSchema, duration: (p) => 30 + p.stops.length * (p.flyFrames + p.holdFrames),
+    defaultProps: { title: "বাংলাদেশ ভ্রমণ", viewKm: 520, vehicle: "🚌", flyFrames: 50, holdFrames: 70, stops: [
+      { place: { name: "Dhaka" }, icon: "🏙️", heading: "ঢাকা", text: "যাত্রা শুরু রাজধানী থেকে" },
+      { place: { name: "Sylhet" }, icon: "🍃", heading: "সিলেট", text: "চা বাগান আর সবুজ পাহাড়" },
+      { place: { name: "Chattogram" }, icon: "⚓", heading: "চট্টগ্রাম", text: "বন্দর নগরী আর পাহাড়" },
+      { place: { name: "Cox's Bazar" }, icon: "🏖️", heading: "কক্সবাজার", text: "পৃথিবীর দীর্ঘতম সমুদ্র সৈকত" }] } }),
+  def({ id: "MapArcs", styles: [25, 38], component: MapArcs, schema: mapArcsSchema, duration: (p) => 20 + p.destinations.length * 10 + 120,
+    defaultProps: { title: "Viewers around the world", subtitle: "Demo data — replace with your analytics", unit: "", outward: true, hub: { name: "Dhaka" }, destinations: [
+      { place: { name: "Riyadh" }, value: 4200 }, { place: { name: "Dubai" }, value: 3100 }, { place: { name: "London" }, value: 2400 },
+      { place: { name: "New York" }, value: 1900 }, { place: { name: "Kuala Lumpur" }, value: 1600 }, { place: { name: "Doha" }, value: 1200 },
+      { place: { name: "Rome" }, value: 900 }, { place: { name: "Toronto" }, value: 800 }, { place: { name: "Sydney" }, value: 600 }, { place: { name: "Tokyo" }, value: 500 }] } }),
+  def({ id: "StormTrack", styles: [25, 38], component: StormTrack, schema: stormTrackSchema, duration: () => 330,
+    defaultProps: { name: "Cyclone Demo", landfallIndex: 5, bounds: [80, 7, 98, 27], note: "Illustrative track — not a real forecast. Use official BMD/IMD advisories for real news.", track: [
+      { lat: 10.5, lon: 87.5, wind: 45, label: "Day 1" }, { lat: 12.5, lon: 88.0, wind: 70, label: "Day 2" }, { lat: 14.8, lon: 88.6, wind: 110, label: "Day 3" },
+      { lat: 17.2, lon: 89.0, wind: 160, label: "Day 4" }, { lat: 19.6, lon: 89.4, wind: 200, label: "Day 5" }, { lat: 21.9, lon: 89.8, wind: 175, label: "Landfall" },
+      { lat: 23.6, lon: 90.4, wind: 95, label: "" }, { lat: 25.2, lon: 91.2, wind: 55, label: "" }] } }),
+  def({ id: "CountryHighlight", styles: [38, 21], component: CountryHighlight, schema: countryHighlightSchema, duration: (p) => 25 + p.items.length * p.framesPerItem + 60,
+    defaultProps: { title: "সার্কের ৮টি দেশ", framesPerItem: 18, zoomToData: true, items: [
+      { country: "Afghanistan", label: "আফগানিস্তান", note: "" }, { country: "Bangladesh", label: "বাংলাদেশ", note: "" },
+      { country: "Bhutan", label: "ভুটান", note: "" }, { country: "India", label: "ভারত", note: "" },
+      { country: "Maldives", label: "মালদ্বীপ", note: "" }, { country: "Nepal", label: "নেপাল", note: "" },
+      { country: "Pakistan", label: "পাকিস্তান", note: "" }, { country: "Sri Lanka", label: "শ্রীলঙ্কা", note: "" }] } }),
 ];

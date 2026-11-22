@@ -174,6 +174,11 @@ All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 | `CountryCompare` | Map | "How big is X really?", true-size comparisons |
 | `EarthZoom` | Map | "Where is my village?", space-to-house dives |
 | `ZoomChain` | Photo | Zoom through your own maps/photos step by step |
+| `CharacterGallery` | 2D | "Meet the cast" — 16 original characters (people, robot, animals) |
+| `MapTour` | Map | Trips, history routes, "a day in…" travel stories |
+| `MapArcs` | Map | Remittances, flights, viewers/fans around the world |
+| `StormTrack` | Map | Cyclone / storm news explainers (use official track data) |
+| `CountryHighlight` | Map | Country groups and lists (SAARC, borders, top-N countries) |
 
 ## Choosing a style by video case
 

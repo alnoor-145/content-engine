@@ -6,14 +6,15 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
 
 ## What's inside
 
-- **70 animation templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings), plus extra 3D, 2D, map and story scenes:
+- **75 animation templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings), plus extra 3D, 2D, map and story scenes:
 
   | Group | Templates |
   |---|---|
   | Typography | `KineticText`, `Typewriter`, `GlitchText`, `WordCaptions`, `TitleCard`, `QuoteCard`, `ScrambleText`, `MaskReveal`, `HighlightText`, `SplitFlap`, `ExtrudedText`, `TextOnPath` |
   | Explainers | `LineDraw` (whiteboard / chalkboard / blueprint), `RoughSketch` (hand-drawn), `Flowchart`, `Timeline`, `ListReveal`, `Comparison`, `CodeBlock`, `Equation` (LaTeX math) |
   | Cartoon stories | `StoryScene`: talking characters with lip-sync to your voice, Bangla karaoke subtitles, walking, gestures, emotions, camera follows the speaker, village / river / road / field / night scenes with boats, birds, cars, rain, fireflies, scene transitions and auto-ducking music |
-  | Maps & places | `MapSearch` (maps-app search → fly → route with time & distance), `CountryProfile` (globe → country + stats), `CountryCompare` (true-size comparison), `EarthZoom` (space → country → village → house), `ZoomChain` (zoom through your own pictures), `MapRoute`, `MapHeatmap`, `Globe` |
+  | Characters | `CharacterGallery` + a library of 16 original characters (`src/story/cast.ts`): farmer, doctor, police, teacher in saree, student, girl in hijab, hujur, grandma, chef, businessman, worker, robot, cat, dog, cow, chicken — each with outfits, hats and accessories you can recolour |
+  | Maps & places | `MapTour` (fly between stops with info cards), `MapArcs` (hub-to-world connections), `StormTrack` (cyclone path), `CountryHighlight` (countries light up one by one), `MapSearch` (maps-app search → fly → route with time & distance), `CountryProfile` (globe → country + stats), `CountryCompare` (true-size comparison), `EarthZoom` (space → country → village → house), `ZoomChain` (zoom through your own pictures), `MapRoute`, `MapHeatmap`, `Globe` |
   | Data | `BarChart`, `BarChartRace`, `LineChart`, `DonutChart`, `Pictogram`, `StatCounter` |
   | Social & branding | `SubscribeCTA`, `EndScreen`, `ChatStory`, `NotificationPop`, `NewsTicker`, `ChapterBar`, `DeviceMockup`, `SoftUI` |
   | Transitions | `TransitionsReel` (fade, slide, wipe, flip, clock), `TransitionsReel2` (iris/star mask, whip pan, ink splash, light leak) |
