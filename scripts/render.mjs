@@ -7,6 +7,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const FORMAT_IDS = { youtube: "YouTube", short: "Short", fbSquare: "FB-Square", fbFeed: "FB-Feed" };
+const REMOTION_CLI = join("node_modules", "@remotion", "cli", "remotion-cli.js");
 
 const [slug, onlyFormat] = process.argv.slice(2);
 if (!slug) {
@@ -37,7 +38,8 @@ for (const f of formats) {
   const comp = `${formatId}-${video.template}`;
   const out = join(outDir, `${slug}-${f}.mp4`);
   console.log(`\n▶ Rendering ${comp} → ${out}`);
-  const r = spawnSync("npx", ["remotion", "render", comp, out, `--props=${propsFile}`], { stdio: "inherit", shell: true });
+  // Run the Remotion CLI with the current Node binary (no shell, so paths with spaces are safe).
+  const r = spawnSync(process.execPath, [REMOTION_CLI, "render", comp, out, `--props=${propsFile}`], { stdio: "inherit" });
   if (r.status !== 0) process.exit(r.status ?? 1);
 }
 console.log(`\n✔ Done. Files in ${outDir}`);

@@ -20,6 +20,24 @@ import { TitleCard, titleCardSchema } from "./TitleCard";
 import { TRANSITION_FRAMES, TransitionsReel, transitionsReelSchema } from "./TransitionsReel";
 import { Typewriter, typewriterSchema } from "./Typewriter";
 import { WordCaptions, wordCaptionsSchema } from "./WordCaptions";
+import { AudioWave, audioWaveSchema } from "./AudioWave";
+import { BarChartRace, barChartRaceSchema } from "./BarChartRace";
+import { ChapterBar, chapterBarSchema } from "./ChapterBar";
+import { ChatStory, chatStorySchema } from "./ChatStory";
+import { CodeBlock, codeBlockSchema } from "./CodeBlock";
+import { DonutChart, donutChartSchema } from "./DonutChart";
+import { EndScreen, endScreenSchema } from "./EndScreen";
+import { Flowchart, flowchartSchema } from "./Flowchart";
+import { Globe, globeSchema } from "./Globe";
+import { HighlightText, highlightTextSchema } from "./HighlightText";
+import { LineChart, lineChartSchema } from "./LineChart";
+import { MaskReveal, maskRevealSchema } from "./MaskReveal";
+import { NewsTicker, newsTickerSchema } from "./NewsTicker";
+import { NotificationPop, notificationPopSchema } from "./NotificationPop";
+import { Pictogram, pictogramSchema } from "./Pictogram";
+import { ScrambleText, scrambleTextSchema } from "./ScrambleText";
+import { SplitFlap, splitFlapSchema } from "./SplitFlap";
+import { SubscribeCTA, subscribeCtaSchema } from "./SubscribeCTA";
 
 export type TemplateDef = {
   id: string;
@@ -83,4 +101,61 @@ export const TEMPLATES: TemplateDef[] = [
   def({ id: "TransitionsReel", styles: [69, 70, 71, 72, 73], component: TransitionsReel, schema: transitionsReelSchema,
     duration: (p) => p.scenes.length * p.framesPerScene - (p.scenes.length - 1) * TRANSITION_FRAMES,
     defaultProps: { scenes: ["Fade", "Slide", "Wipe", "Flip", "Clock wipe", "Done"], framesPerScene: 45 } }),
+
+  // ── Social, branding & UI ─────────────────────────────────────────────
+  def({ id: "SubscribeCTA", styles: [82], component: SubscribeCTA, schema: subscribeCtaSchema, duration: () => 130,
+    defaultProps: { channelName: theme.channelName, tagline: "New motion graphics every week", subscribeText: "Subscribe", subscribedText: "Subscribed", likeText: "Like" } }),
+  def({ id: "EndScreen", styles: [83], component: EndScreen, schema: endScreenSchema, duration: () => 600,
+    defaultProps: { heading: "Watch next", channelName: theme.channelName, videoLabels: ["Latest video", "Best for you"] } }),
+  def({ id: "ChatStory", styles: [85, 86], component: ChatStory, schema: chatStorySchema, duration: (p) => 10 + p.messages.length * p.framesPerMessage + 45,
+    defaultProps: { contactName: "Rafi", status: "online", framesPerMessage: 28, messages: [
+      { from: "them", text: "Bro, how do you make those animations? 😮" },
+      { from: "me", text: "I built my own engine. It's all code!" },
+      { from: "them", text: "No way. Is it hard?" },
+      { from: "me", text: "One JSON file → video for YouTube AND Facebook" },
+      { from: "them", text: "Teach me 🙏" },
+      { from: "me", text: "Follow the channel 😎" }] } }),
+  def({ id: "NotificationPop", styles: [87], component: NotificationPop, schema: notificationPopSchema, duration: (p) => 8 + p.notifications.length * p.framesPerNotification + 50,
+    defaultProps: { framesPerNotification: 22, notifications: [
+      { app: "YouTube", icon: "▶️", title: "Your video hit 10K views", body: "Keep the momentum going!" },
+      { app: "Facebook", icon: "👍", title: "1,240 people reacted", body: "Your reel is trending" },
+      { app: "Studio", icon: "💰", title: "Monetization approved", body: "Congratulations 🎉" }] } }),
+  def({ id: "NewsTicker", styles: [41], component: NewsTicker, schema: newsTickerSchema, duration: () => 240,
+    defaultProps: { label: "BREAKING", headline: "Local creator builds own animation engine", subheadline: "35 motion graphics styles, fully open source", tickerSpeed: 6, tickerItems: ["New video every Friday", "Shorts daily", "Subscribe for more", "Open source on GitHub"] } }),
+  def({ id: "ChapterBar", styles: [88], component: ChapterBar, schema: chapterBarSchema, duration: (p) => Math.round(p.chapters.reduce((a, c) => a + c.seconds, 0) * 30),
+    defaultProps: { chapters: [{ title: "Intro", seconds: 2 }, { title: "The idea", seconds: 3 }, { title: "How it works", seconds: 3 }, { title: "Results", seconds: 2 }] } }),
+
+  // ── More typography ───────────────────────────────────────────────────
+  def({ id: "ScrambleText", styles: [9], component: ScrambleText, schema: scrambleTextSchema, duration: (p) => p.lines.length * p.framesPerLine,
+    defaultProps: { lines: ["ACCESS GRANTED", "THE SECRET IS OUT", "আসল রহস্য"], framesPerLine: 60 } }),
+  def({ id: "MaskReveal", styles: [10], component: MaskReveal, schema: maskRevealSchema, duration: (p) => 10 + p.lines.length * 10 + 80,
+    defaultProps: { kicker: "EPISODE 01", lines: ["The story", "nobody tells you"] } }),
+  def({ id: "HighlightText", styles: [13], component: HighlightText, schema: highlightTextSchema, duration: (p) => 10 + p.text.split(" ").length * 3 + 5 + p.highlights.length * 12 + 45,
+    defaultProps: { text: "Consistency beats talent when talent does not show up every day.", highlights: ["Consistency", "every", "day."] } }),
+  def({ id: "SplitFlap", styles: [8], component: SplitFlap, schema: splitFlapSchema, duration: (p) => 8 + p.lines.length * 6 + Math.max(...p.lines.map((l) => l.length)) * 2.2 + 14 + 50,
+    defaultProps: { label: "NOW BOARDING", lines: ["NEXT STOP", "1M VIEWS"] } }),
+  def({ id: "CodeBlock", styles: [24], component: CodeBlock, schema: codeBlockSchema, duration: (p) => 10 + Math.ceil(p.code.length / p.charsPerFrame) + 45,
+    defaultProps: { filename: "engine.ts", charsPerFrame: 2.5, code: "// render one video for every platform\nconst formats = [\"youtube\", \"short\", \"fbFeed\"];\n\nfor (const f of formats) {\n  await render(\"KineticText\", f);\n}\nconsole.log(\"Done in\", 42, \"seconds\");" } }),
+
+  // ── More data & infographics ──────────────────────────────────────────
+  def({ id: "LineChart", styles: [34], component: LineChart, schema: lineChartSchema, duration: () => 130,
+    defaultProps: { title: "Subscribers per month", unit: "", points: [{ label: "Jan", value: 120 }, { label: "Feb", value: 340 }, { label: "Mar", value: 310 }, { label: "Apr", value: 780 }, { label: "May", value: 1250 }, { label: "Jun", value: 2400 }] } }),
+  def({ id: "DonutChart", styles: [35], component: DonutChart, schema: donutChartSchema, duration: () => 120,
+    defaultProps: { title: "Where my views come from", centerLabel: "of views", segments: [{ label: "YouTube Shorts", value: 45 }, { label: "Facebook Reels", value: 30 }, { label: "Long videos", value: 25 }] } }),
+  def({ id: "BarChartRace", styles: [32], component: BarChartRace, schema: barChartRaceSchema, duration: (p) => 15 + (p.steps.length - 1) * p.framesPerStep + 60,
+    defaultProps: { title: "Most used social apps (millions)", unit: "M", framesPerStep: 45, topN: 5, steps: [
+      { label: "2018", values: { Facebook: 2200, YouTube: 1900, WhatsApp: 1500, Instagram: 1000, TikTok: 270 } },
+      { label: "2020", values: { Facebook: 2600, YouTube: 2000, WhatsApp: 2000, Instagram: 1200, TikTok: 690 } },
+      { label: "2022", values: { Facebook: 2900, YouTube: 2500, WhatsApp: 2000, Instagram: 2000, TikTok: 1000 } },
+      { label: "2024", values: { Facebook: 3000, YouTube: 2500, WhatsApp: 2000, Instagram: 2000, TikTok: 1580 } }] } }),
+  def({ id: "Pictogram", styles: [37], component: Pictogram, schema: pictogramSchema, duration: () => 120,
+    defaultProps: { title: "viewers never subscribe", total: 100, highlighted: 90, caption: "Be the reason the other 10 do." } }),
+
+  // ── Explainers, 3D & audio ────────────────────────────────────────────
+  def({ id: "Flowchart", styles: [18], component: Flowchart, schema: flowchartSchema, duration: (p) => 10 + p.steps.length * p.framesPerStep + 40,
+    defaultProps: { title: "My content workflow", framesPerStep: 20, steps: [{ icon: "💡", label: "Idea" }, { icon: "📝", label: "Script" }, { icon: "🎬", label: "Animate" }, { icon: "🚀", label: "Publish" }] } }),
+  def({ id: "Globe", styles: [65], component: Globe, schema: globeSchema, duration: () => 180,
+    defaultProps: { title: "Worldwide audience", subtitle: "Dhaka → London → New York → Dubai", connect: true, markers: [{ lat: 23.8, lon: 90.4 }, { lat: 51.5, lon: -0.1 }, { lat: 40.7, lon: -74 }, { lat: 25.2, lon: 55.3 }] } }),
+  def({ id: "AudioWave", styles: [53, 92], component: AudioWave, schema: audioWaveSchema, duration: (p) => Math.round(p.durationSeconds * 30),
+    defaultProps: { title: "The Creator Podcast", subtitle: "Episode 1 · Starting from zero", audioSrc: "", durationSeconds: 6 } }),
 ];

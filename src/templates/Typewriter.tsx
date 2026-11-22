@@ -2,6 +2,7 @@ import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { z } from "zod";
 import { theme } from "../brand/theme";
 import { Background } from "../components/Background";
+import { graphemes } from "../lib/text";
 import { useBase } from "../lib/useBase";
 
 export const typewriterSchema = z.object({
@@ -14,7 +15,7 @@ export const typewriterSchema = z.object({
 export const Typewriter: React.FC<z.infer<typeof typewriterSchema>> = ({ prompt, text, charsPerFrame }) => {
   const frame = useCurrentFrame();
   const base = useBase();
-  const shown = text.slice(0, Math.floor(frame * charsPerFrame));
+  const shown = graphemes(text).slice(0, Math.floor(frame * charsPerFrame)).join("");
   const cursorOn = Math.floor(frame / 15) % 2 === 0;
 
   return (
@@ -27,7 +28,7 @@ export const Typewriter: React.FC<z.infer<typeof typewriterSchema>> = ({ prompt,
             background: `${theme.colors.surface}EE`,
             borderRadius: base * 0.025,
             padding: base * 0.05,
-            fontFamily: "'JetBrains Mono', Consolas, monospace",
+            fontFamily: `${theme.fonts.mono}, ${theme.fonts.bangla}`,
             fontSize: base * 0.05,
             color: theme.colors.text,
             whiteSpace: "pre-wrap",

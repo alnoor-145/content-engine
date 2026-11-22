@@ -11,7 +11,8 @@
     "render:short": "remotion render Short-KineticText out/short-kinetic.mp4",
     "render:fb-square": "remotion render FB-Square-TitleCard out/fb-square-title.mp4",
     "render:fb-feed": "remotion render FB-Feed-KineticText out/fb-feed-kinetic.mp4",
-    "new": "node scripts/new-video.mjs"
+    "new": "node scripts/new-video.mjs",
+    "demo-audio": "node scripts/make-demo-audio.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.2",

@@ -1,0 +1,13 @@
+{
+  "title": "বাংলা ডেমো: আমার কনটেন্ট যাত্রা",
+  "template": "KineticText",
+  "formats": ["short", "fbFeed"],
+  "props": {
+    "lines": ["আমার কনটেন্ট যাত্রা", "প্রতি সপ্তাহে নতুন ভিডিও", "চলুন শুরু করি"],
+    "framesPerLine": 50
+  },
+  "publish": {
+    "youtube": { "title": "আমার কনটেন্ট যাত্রা শুরু", "description": "", "tags": ["বাংলা", "motion graphics"] },
+    "facebook": { "caption": "আমার কনটেন্ট যাত্রার প্রথম দিন 🚀" }
+  }
+}

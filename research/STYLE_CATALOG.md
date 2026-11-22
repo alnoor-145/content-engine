@@ -19,12 +19,12 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 5 | Title card / bold intro | Episode intros, thumbnails in motion | ✅ `TitleCard` |
 | 6 | Quote card | Quotes, testimonials, wisdom posts | ✅ `QuoteCard` |
 | 7 | Lower third | Name, handle, source credit | ✅ `LowerThird` component |
-| 8 | Split-flap / flip board | Countdowns, announcements | 🗺️ planned (CSS 3D) |
-| 9 | Scramble / decode text | Mystery, hacking, reveals | 🗺️ planned (`random()` from remotion) |
-| 10 | Mask-reveal text | Premium brand intros | 🗺️ planned (CSS `clip-path`) |
+| 8 | Split-flap / flip board | Countdowns, announcements | ✅ `SplitFlap` |
+| 9 | Scramble / decode text | Mystery, hacking, reveals | ✅ `ScrambleText` |
+| 10 | Mask-reveal text | Premium brand intros | ✅ `MaskReveal` |
 | 11 | Stroke-draw lettering | Handwritten titles | 🔧 `LineDraw` with letter paths |
 | 12 | 3D extruded text | Gaming, trailers | 🗺️ planned (`@remotion/three` + drei `Text3D`) |
-| 13 | Highlight / marker sweep | Educational emphasis | 🗺️ planned |
+| 13 | Highlight / marker sweep | Educational emphasis | ✅ `HighlightText` |
 | 14 | Text on path | Playful, retro | 🗺️ planned (`@remotion/paths`) |
 | 15 | Big number + label | Stats, facts | ✅ `StatCounter` |
 
@@ -34,13 +34,13 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 |---|---|---|---|
 | 16 | Whiteboard / line drawing | Explainers, how-it-works | ✅ `LineDraw` |
 | 17 | Flat 2D explainer | Product, concept explainers | 🔧 `ListReveal` + `Isometric` scenes |
-| 18 | Diagram / flowchart build | Processes, systems | 🗺️ planned (`@remotion/paths` arrows) |
+| 18 | Diagram / flowchart build | Processes, systems | ✅ `Flowchart` |
 | 19 | Timeline | History, biographies, roadmaps | ✅ `Timeline` |
 | 20 | Comparison / versus split | A vs B, before/after | ✅ `Comparison` |
 | 21 | Top-N listicle reveal | "Top 5 ...", rankings | ✅ `ListReveal` |
 | 22 | Step-by-step tutorial cards | How-to guides | 🔧 `ListReveal` (numbered) |
 | 23 | Math / equation animation | STEM teaching | 🗺️ *external*: Manim or Motion Canvas |
-| 24 | Code walkthrough | Programming channels | 🗺️ planned (Shiki highlighting + `Typewriter`) |
+| 24 | Code walkthrough | Programming channels | ✅ `CodeBlock` |
 | 25 | Map route animation | Travel, geography, history | 🗺️ planned (SVG maps + `@remotion/paths`) |
 | 26 | Icon-driven explainer | Social posts, quick facts | 🔧 `ListReveal` with emoji/icons |
 | 27 | Character explainer (2D rig) | Storytelling | 🗺️ planned (Lottie/Rive characters) |
@@ -53,16 +53,16 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | # | Style | Best for | Engine |
 |---|---|---|---|
 | 31 | Animated bar chart | Comparisons, rankings | ✅ `BarChart` |
-| 32 | Bar chart race | "Most popular X over time" | 🗺️ planned (extend `BarChart` with keyframes) |
+| 32 | Bar chart race | "Most popular X over time" | ✅ `BarChartRace` |
 | 33 | Counting numbers | Milestones, statistics | ✅ `StatCounter` |
-| 34 | Line chart draw | Trends, prices, growth | 🗺️ planned (`@remotion/paths`) |
-| 35 | Pie / donut fill | Shares, percentages | 🗺️ planned (`@remotion/shapes` `makePie`) |
+| 34 | Line chart draw | Trends, prices, growth | ✅ `LineChart` |
+| 35 | Pie / donut fill | Shares, percentages | ✅ `DonutChart` |
 | 36 | Progress bars / meters | Goals, ratings | 🔧 `BarChart` single bar |
-| 37 | Pictogram / icon arrays | Population, "1 in 10" | 🗺️ planned |
+| 37 | Pictogram / icon arrays | Population, "1 in 10" | ✅ `Pictogram` |
 | 38 | Map heatmap | Country stats | 🗺️ planned |
 | 39 | Animated table / leaderboard | Rankings, sports | 🔧 `ListReveal` |
 | 40 | Dashboard / KPI tiles | Business, finance updates | 🔧 `StatCounter` grid |
-| 41 | Scrolling news ticker | News, updates | 🗺️ planned |
+| 41 | Scrolling news ticker | News, updates | ✅ `NewsTicker` |
 | 42 | Data-driven video from JSON/CSV | Weekly recap series | ✅ every template (`content/videos/*/video.json`) |
 
 ## D. Shape, geometry & abstract (43–58)
@@ -79,7 +79,7 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 50 | Grid / Bauhaus / Swiss | Design, art channels | 🗺️ planned |
 | 51 | Op-art / looping illusion | Satisfying loops | 🗺️ planned |
 | 52 | Noise / generative art | Ambient, music visuals | 🗺️ planned (`@remotion/noise`, add later) |
-| 53 | Audio visualizer / waveform | Podcasts, music | 🗺️ planned (`@remotion/media-utils` installed) |
+| 53 | Audio visualizer / waveform | Podcasts, music | ✅ `AudioWave` |
 | 54 | Neon / synthwave | Retro, gaming, music | 🔧 `GlitchText` + neon theme |
 | 55 | Glassmorphism UI | Tech, apps | 🔧 `Comparison`/`QuoteCard` glass cards |
 | 56 | Neumorphism | Product UI demos | 🗺️ planned |
@@ -96,7 +96,7 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | 62 | Camera fly-through | Architecture, worlds | 🗺️ planned (`@remotion/three` camera) |
 | 63 | 3D device mockup | App/website showcases | 🗺️ planned (GLTF models) |
 | 64 | Claymation look | Kids, playful | 🗺️ planned (3D + soft lighting) |
-| 65 | 3D globe | News, travel, geopolitics | 🗺️ planned (three.js sphere + texture) |
+| 65 | 3D globe | News, travel, geopolitics | ✅ `Globe` |
 | 66 | Voxel | Gaming, Minecraft-adjacent | 🗺️ planned |
 | 67 | Abstract 3D loops | Satisfying, ambient | 🔧 `ThreeDHero` |
 | 68 | Exploded view | Tech, products | 🗺️ planned |
@@ -123,17 +123,17 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 | # | Style | Best for | Engine |
 |---|---|---|---|
 | 81 | Logo sting / reveal | Channel branding | 🔧 `TitleCard` |
-| 82 | Subscribe / like CTA | End of every YouTube video | 🗺️ planned |
-| 83 | End screen | YouTube end cards | 🗺️ planned |
+| 82 | Subscribe / like CTA | End of every YouTube video | ✅ `SubscribeCTA` |
+| 83 | End screen | YouTube end cards | ✅ `EndScreen` |
 | 84 | Social comment / tweet card | Reactions, commentary | 🔧 `QuoteCard` |
-| 85 | Chat / messaging animation | Stories, drama, skits | 🗺️ planned |
-| 86 | Phone UI / app mockup | Tech reviews | 🗺️ planned |
-| 87 | Notification pop-ups | Hooks, attention | 🗺️ planned |
-| 88 | Progress / chapter bar | Long videos | 🗺️ planned |
+| 85 | Chat / messaging animation | Stories, drama, skits | ✅ `ChatStory` |
+| 86 | Phone UI / app mockup | Tech reviews | 🔧 `ChatStory` phone frame |
+| 87 | Notification pop-ups | Hooks, attention | ✅ `NotificationPop` |
+| 88 | Progress / chapter bar | Long videos | ✅ `ChapterBar` |
 | 89 | Countdown | Launches, Top-N | 🔧 `StatCounter` (counting down) |
 | 90 | Split-screen reaction | Reaction videos | 🔧 `Comparison` |
 | 91 | Meme / caption overlay | Comedy shorts | 🔧 `WordCaptions` |
-| 92 | Podcast audiogram | Podcast clips | 🗺️ planned (`@remotion/media-utils`) |
+| 92 | Podcast audiogram | Podcast clips | ✅ `AudioWave` (point `audioSrc` at your voiceover) |
 
 ## H. Illustration & traditional looks (93–100)
 
@@ -152,10 +152,18 @@ Formats: YouTube 16:9 · Shorts/Reels 9:16 · Facebook 1:1 and 4:5.
 
 | Video case | Start with |
 |---|---|
-| YouTube Short / Reel hook | `KineticText` → `WordCaptions` |
-| Explainer / education | `LineDraw`, `Timeline`, `ListReveal`, `BarChart` |
-| News / facts | `StatCounter`, `BarChart`, `Typewriter` |
-| Motivation / quotes | `QuoteCard`, `KineticText`, `LiquidBlob` background |
-| Tech / gaming | `GlitchText`, `Particles`, `ThreeDHero`, `Isometric` |
-| Comparison / review | `Comparison`, `BarChart` |
-| Channel branding | `TitleCard`, `LowerThird`, `TransitionsReel` |
+| YouTube Short / Reel hook | `NotificationPop`, `KineticText`, `ScrambleText` → `WordCaptions` |
+| Story / drama / skit | `ChatStory`, `Typewriter` |
+| Explainer / education | `LineDraw`, `Flowchart`, `HighlightText`, `Timeline`, `ListReveal` |
+| News / facts | `NewsTicker`, `Globe`, `StatCounter`, `Pictogram`, `Typewriter` |
+| Data / statistics | `BarChartRace`, `LineChart`, `DonutChart`, `BarChart`, `Pictogram` |
+| Motivation / quotes | `QuoteCard`, `HighlightText`, `KineticText`, `LiquidBlob` |
+| Tech / gaming / coding | `CodeBlock`, `GlitchText`, `Particles`, `ThreeDHero`, `Isometric` |
+| Podcast / music clips | `AudioWave` |
+| Comparison / review | `Comparison`, `BarChart`, `DonutChart` |
+| Long videos | `ChapterBar` between sections, `EndScreen` at the end |
+| Channel branding | `TitleCard`, `MaskReveal`, `SplitFlap`, `SubscribeCTA`, `TransitionsReel` |
+
+## Bangla (বাংলা) support
+
+Every template renders Bangla text with the **Hind Siliguri** font, loaded automatically. Per-character effects (`Typewriter`, `ScrambleText`, `SplitFlap`) split text by grapheme, so conjuncts like ক্ষ, স্ত্র and ন্ট stay intact. Mixed Bangla + English text works too.
