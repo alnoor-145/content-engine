@@ -67,6 +67,13 @@ import { Mascot, mascotSchema } from "./Mascot";
 import { SolarSystem, solarSystemSchema } from "./SolarSystem";
 import { Text3D, text3DSchema } from "./Text3D";
 import { Tunnel3D, tunnel3DSchema } from "./Tunnel3D";
+import { CountryCompare, countryCompareSchema } from "./CountryCompare";
+import { CountryProfile, countryProfileSchema } from "./CountryProfile";
+import { EarthZoom, earthZoomSchema } from "./EarthZoom";
+import { MapSearch, mapSearchSchema } from "./MapSearch";
+import { ZoomChain, zoomChainSchema } from "./ZoomChain";
+import { StoryScene, storySceneSchema } from "./StoryScene";
+import { DEMO_STORY } from "../story/demo";
 
 export type TemplateDef = {
   id: string;
@@ -268,4 +275,30 @@ export const TEMPLATES: TemplateDef[] = [
     defaultProps: { title: "A day in the city", subtitle: "From sunrise to city lights" } }),
   def({ id: "Countdown", styles: [89], component: Countdown, schema: countdownSchema, duration: (p) => p.seconds * 30 + 50,
     defaultProps: { label: "Premiere starts in", seconds: 10, endText: "LIVE!" } }),
+
+  // ── Batch 5: maps, places and zoom ────────────────────────────────────
+  def({ id: "MapSearch", styles: [25, 86], component: MapSearch, schema: mapSearchSchema, duration: () => 330,
+    defaultProps: { from: { name: "Dhaka" }, to: { name: "Cox's Bazar" }, mode: "car", searchPlaceholder: "Search a place" } }),
+  def({ id: "CountryProfile", styles: [25, 38, 40], component: CountryProfile, schema: countryProfileSchema, duration: (p) => 165 + p.stats.length * 12 + 90,
+    defaultProps: { country: "Bangladesh", title: "Bangladesh at a glance", capital: { name: "Dhaka" }, source: "Sources: BBS Population & Housing Census 2022; Government of Bangladesh", stats: [
+      { icon: "👥", label: "Population (2022 census)", value: 169.8, unit: "million", decimals: 1 },
+      { icon: "🗺️", label: "Area", value: 147570, unit: "km²", decimals: 0 },
+      { icon: "🏛️", label: "Divisions", value: 8, unit: "", decimals: 0 },
+      { icon: "📍", label: "Districts", value: 64, unit: "", decimals: 0 }] } }),
+  def({ id: "CountryCompare", styles: [20, 38], component: CountryCompare, schema: countryCompareSchema, duration: () => 300,
+    defaultProps: { title: "Bangladesh vs UK — true size", source: "Population: national censuses 2021–22 · Area: official figures",
+      a: { name: "Bangladesh", label: "Bangladesh", population: 169.8, area: 147570 },
+      b: { name: "United Kingdom", label: "UK", population: 67.0, area: 242495 } } }),
+  def({ id: "EarthZoom", styles: [62, 65], component: EarthZoom, schema: earthZoomSchema, duration: () => 360,
+    defaultProps: { target: { name: "Dhaka" }, labels: ["পৃথিবী", "বাংলাদেশ", "ঢাকা বিভাগ", "আমার গ্রাম", "আমার বাড়ি"], seed: "home" } }),
+  def({ id: "ZoomChain", styles: [61, 74], component: ZoomChain, schema: zoomChainSchema, duration: (p) => p.images.length * p.framesPerImage,
+    defaultProps: { framesPerImage: 90, zoom: 6, images: [
+      { src: "zoom-demo-1.jpg", x: 0.31, y: 0.54, label: "Bangladesh" },
+      { src: "zoom-demo-2.jpg", x: 0.5, y: 0.72, label: "City" },
+      { src: "demo-photo.jpg", x: 0.5, y: 0.5, label: "Place" }] } }),
+
+  // ── Batch 6: cartoon story engine ─────────────────────────────────────
+  def({ id: "StoryScene", styles: [17, 27, 4], component: StoryScene, schema: storySceneSchema,
+    duration: (p) => Math.ceil(Math.max(...p.scenes.map((s) => s.end)) * 30),
+    defaultProps: DEMO_STORY }),
 ];

@@ -1,0 +1,10 @@
+{
+  "title": "নদীর ঘাটে — কার্টুন গল্প",
+  "template": "StoryScene",
+  "formats": ["youtube", "short", "fbReel"],
+  "props": {},
+  "publish": {
+    "youtube": { "title": "নদীর ঘাটে | বাংলা কার্টুন গল্প", "description": "Subscribe: https://www.youtube.com/@SubscribeYt_1", "tags": ["বাংলা কার্টুন", "গল্প", "animation"] },
+    "facebook": { "caption": "নতুন কার্টুন গল্প 🌊🚣 — নদীর ঘাটে" }
+  }
+}

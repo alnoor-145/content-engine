@@ -6,13 +6,15 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
 
 ## What's inside
 
-- **64 animation style templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings), plus extra 3D and 2D scenes:
+- **70 animation templates** covering 96 of the 100 catalogued styles (73 directly, 23 by changing a template's settings), plus extra 3D, 2D, map and story scenes:
 
   | Group | Templates |
   |---|---|
   | Typography | `KineticText`, `Typewriter`, `GlitchText`, `WordCaptions`, `TitleCard`, `QuoteCard`, `ScrambleText`, `MaskReveal`, `HighlightText`, `SplitFlap`, `ExtrudedText`, `TextOnPath` |
   | Explainers | `LineDraw` (whiteboard / chalkboard / blueprint), `RoughSketch` (hand-drawn), `Flowchart`, `Timeline`, `ListReveal`, `Comparison`, `CodeBlock`, `Equation` (LaTeX math) |
-  | Maps & data | `MapRoute`, `MapHeatmap`, `Globe`, `BarChart`, `BarChartRace`, `LineChart`, `DonutChart`, `Pictogram`, `StatCounter` |
+  | Cartoon stories | `StoryScene`: talking characters with lip-sync to your voice, Bangla karaoke subtitles, walking, gestures, emotions, camera follows the speaker, village / river / road / field / night scenes with boats, birds, cars, rain, fireflies, scene transitions and auto-ducking music |
+  | Maps & places | `MapSearch` (maps-app search → fly → route with time & distance), `CountryProfile` (globe → country + stats), `CountryCompare` (true-size comparison), `EarthZoom` (space → country → village → house), `ZoomChain` (zoom through your own pictures), `MapRoute`, `MapHeatmap`, `Globe` |
+  | Data | `BarChart`, `BarChartRace`, `LineChart`, `DonutChart`, `Pictogram`, `StatCounter` |
   | Social & branding | `SubscribeCTA`, `EndScreen`, `ChatStory`, `NotificationPop`, `NewsTicker`, `ChapterBar`, `DeviceMockup`, `SoftUI` |
   | Transitions | `TransitionsReel` (fade, slide, wipe, flip, clock), `TransitionsReel2` (iris/star mask, whip pan, ink splash, light leak) |
   | Abstract & shapes | `Particles`, `LiquidBlob`, `Isometric`, `MorphShapes`, `Patterns` (Bauhaus, op-art, generative) |
@@ -48,6 +50,10 @@ Or render a template straight from Studio. Composition IDs are `<Format>-<Templa
 
 See [`content/videos/002-bangla-demo`](content/videos/002-bangla-demo/video.json) for a Bangla example.
 
+### Cartoon story with your own voice
+
+See [`content/videos/003-story-demo/script.md`](content/videos/003-story-demo/script.md) (in Bangla): record your voice, write an SRT with `Name: text` lines, set `voiceSrc` and `srtSrc`, arrange scenes, render.
+
 ### Your own photos and Lottie animations
 
 - `PhotoFX`: put an image in `public/` and set `"src": "my-photo.jpg"` and `"mode"` (`kenburns`, `punchin`, `duotone`, `halftone` or `parallax`).
@@ -68,6 +74,7 @@ src/
   components/           shared pieces (Background, LowerThird)
   lib/                  helpers (responsive sizing, Bangla-safe text, world map data)
   templates/            one file per animation style + registry.ts
+  story/                cartoon engine: character rig, lip-sync, nature kit, backgrounds, demo story
   transitions/          custom scene transitions (iris, whip pan, ink splash, light leak)
   assets/               bundled demo data (Lottie demo)
   Root.tsx              registers every template × every format

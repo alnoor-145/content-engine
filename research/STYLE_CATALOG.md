@@ -168,6 +168,12 @@ All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 | `EidGreeting` | 2D | Eid / Ramadan / festival greetings in Bangla |
 | `CityNight` | 2D | Calm intros, vlogs, "a day in the life" |
 | `Countdown` | 2D | Premieres, live streams, launches |
+| `StoryScene` | 2D story | Bangla cartoon stories: lip-sync to voice, karaoke subtitles, walking, gestures, emotions, nature scenes, camera moves, transitions |
+| `MapSearch` | Map | Travel, "how far is X", directions explainers |
+| `CountryProfile` | Map | Country facts, geography, news |
+| `CountryCompare` | Map | "How big is X really?", true-size comparisons |
+| `EarthZoom` | Map | "Where is my village?", space-to-house dives |
+| `ZoomChain` | Photo | Zoom through your own maps/photos step by step |
 
 ## Choosing a style by video case
 
@@ -188,7 +194,8 @@ All of #75–79 are reusable presentations in `src/transitions/custom.tsx`.
 | Long videos | `ChapterBar` between sections, `TransitionsReel2` between scenes, `EndScreen` at the end |
 | Science / space | `SolarSystem`, `DNAHelix`, `Equation`, `ExplodedView` |
 | Festivals / milestones | `EidGreeting`, `Celebration`, `Countdown` |
-| Kids / storytelling | `Mascot`, `PaperCutout`, `ClayScene`, `CityNight` |
+| Kids / storytelling | `StoryScene`, `Mascot`, `PaperCutout`, `ClayScene`, `CityNight` |
+| Geography / travel / "where is it" | `MapSearch`, `EarthZoom`, `CountryProfile`, `CountryCompare`, `ZoomChain` |
 | Channel branding | `TitleCard`, `MorphShapes`, `TextOnPath`, `MaskReveal`, `SplitFlap`, `SubscribeCTA` |
 
 ## Bangla (বাংলা) support
