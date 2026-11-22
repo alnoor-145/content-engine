@@ -10,6 +10,7 @@ export const subscribeCtaSchema = z.object({
   subscribeText: z.string(),
   subscribedText: z.string(),
   likeText: z.string(),
+  buttonColor: z.string(),
 });
 
 // Cursor path in the card's 800x450 design space: [frame, x, y].
@@ -34,7 +35,7 @@ const cursorAt = (f: number) => {
 };
 
 // "Like + Subscribe + Bell" call-to-action with an animated cursor clicking each button.
-export const SubscribeCTA: React.FC<z.infer<typeof subscribeCtaSchema>> = ({ channelName, tagline, subscribeText, subscribedText, likeText }) => {
+export const SubscribeCTA: React.FC<z.infer<typeof subscribeCtaSchema>> = ({ channelName, tagline, subscribeText, subscribedText, likeText, buttonColor }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const base = useBase();
@@ -85,7 +86,7 @@ export const SubscribeCTA: React.FC<z.infer<typeof subscribeCtaSchema>> = ({ cha
             <span style={{ transform: `scale(${liked ? 1 + 0.4 * (1 - likePop) + 0.0 : 1})` }}>👍</span>
             {likeText}
           </div>
-          <div style={btn(290, 330, subscribed ? "#3A3F52" : "#FF0000", pressScale(64))}>{subscribed ? `✓ ${subscribedText}` : subscribeText}</div>
+          <div style={btn(290, 330, subscribed ? "#3A3F52" : buttonColor, pressScale(64))}>{subscribed ? `✓ ${subscribedText}` : subscribeText}</div>
           <div style={{ ...btn(645, 90, belled ? theme.colors.accent : "#2A3048", pressScale(86)), fontSize: 40 }}>
             <span style={{ display: "inline-block", transform: `rotate(${ring}deg)`, transformOrigin: "50% 10%" }}>🔔</span>
           </div>

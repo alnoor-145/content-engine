@@ -1,13 +1,13 @@
 {
   "title": "Welcome to my content journey",
   "template": "KineticText",
-  "formats": ["youtube", "short", "fbFeed"],
+  "formats": ["youtube", "short", "fbReel", "fbFeed"],
   "props": {
     "lines": ["Welcome to my channel", "Motion graphics every week", "Let's build this together"],
     "framesPerLine": 50
   },
   "publish": {
-    "youtube": { "title": "Welcome to my content journey", "description": "", "tags": ["motion graphics"] },
-    "facebook": { "caption": "Day 1 of my content creation journey 🚀" }
+    "youtube": { "title": "Welcome to my content journey", "description": "Subscribe to Mr N Boy: https://www.youtube.com/@SubscribeYt_1\nFollow Al NUR on Facebook: https://www.facebook.com/share/1HYnZ8SaYY/", "tags": ["motion graphics"] },
+    "facebook": { "caption": "Day 1 of my content creation journey 🚀 YouTube: https://www.youtube.com/@SubscribeYt_1" }
   }
 }

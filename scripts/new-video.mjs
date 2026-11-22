@@ -7,7 +7,7 @@ import { join } from "node:path";
 
 const [slug, template, ...formats] = process.argv.slice(2);
 if (!slug || !template) {
-  console.error("Usage: npm run new -- <slug> <Template> [youtube short fbSquare fbFeed]");
+  console.error("Usage: npm run new -- <slug> <Template> [youtube short fbReel fbSquare fbFeed]");
   console.error("Templates: see src/templates/registry.ts or research/STYLE_CATALOG.md");
   process.exit(1);
 }
@@ -25,7 +25,7 @@ writeFileSync(
     {
       title: slug.replace(/-/g, " "),
       template,
-      formats: formats.length ? formats : ["youtube", "short"],
+      formats: formats.length ? formats : ["youtube", "short", "fbReel"],
       // Any prop you leave out falls back to the template's defaults.
       props: {},
       publish: { youtube: { title: "", description: "", tags: [] }, facebook: { caption: "" } },

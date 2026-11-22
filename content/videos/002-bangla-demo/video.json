@@ -1,7 +1,7 @@
 {
   "title": "বাংলা ডেমো: আমার কনটেন্ট যাত্রা",
   "template": "KineticText",
-  "formats": ["short", "fbFeed"],
+  "formats": ["short", "fbReel", "fbFeed"],
   "props": {
     "lines": ["আমার কনটেন্ট যাত্রা", "প্রতি সপ্তাহে নতুন ভিডিও", "চলুন শুরু করি"],
     "framesPerLine": 50

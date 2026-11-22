@@ -2,7 +2,7 @@ import type { ComponentType } from "react";
 import type { ZodObject } from "zod";
 
 type AnyZodObject = ZodObject<any>;
-import { theme } from "../brand/theme";
+import { theme, type Brand } from "../brand/theme";
 import { BarChart, barChartSchema } from "./BarChart";
 import { Comparison, comparisonSchema } from "./Comparison";
 import { GlitchText, glitchTextSchema } from "./GlitchText";
@@ -63,22 +63,25 @@ export type TemplateDef = {
   styles: number[];
   component: ComponentType<any>;
   schema: AnyZodObject;
-  defaultProps: Record<string, unknown>;
+  /** Default props, or a function of the platform brand (YouTube vs Facebook channel name, button text…). */
+  defaultProps: Record<string, unknown> | ((brand: Brand) => Record<string, unknown>);
   /** Duration in frames at 30fps, computed from props so data-driven videos size themselves. */
   duration: (props: any) => number;
 };
 
 const def = <S extends AnyZodObject>(t: Omit<TemplateDef, "schema" | "defaultProps" | "duration"> & {
   schema: S;
-  defaultProps: import("zod").infer<S>;
+  defaultProps: import("zod").infer<S> | ((brand: Brand) => import("zod").infer<S>);
   duration: (p: import("zod").infer<S>) => number;
 }): TemplateDef => t as TemplateDef;
+
+export const resolveDefaults = (t: TemplateDef, brand: Brand) => (typeof t.defaultProps === "function" ? t.defaultProps(brand) : t.defaultProps);
 
 const demoWords = "Stop scrolling this tip will change how you make videos forever".split(" ").map((text, i) => ({ text, startMs: i * 380, endMs: (i + 1) * 380 }));
 
 export const TEMPLATES: TemplateDef[] = [
   def({ id: "TitleCard", styles: [5, 81], component: TitleCard, schema: titleCardSchema, duration: () => 120,
-    defaultProps: { title: "My Content Journey", subtitle: "Episode 1 — Getting started", handle: `@${theme.channelName.replace(/\s+/g, "")}` } }),
+    defaultProps: (b) => ({ title: "My Content Journey", subtitle: "Episode 1 — Getting started", handle: b.handle }) }),
   def({ id: "KineticText", styles: [1], component: KineticText, schema: kineticTextSchema, duration: (p) => p.lines.length * p.framesPerLine,
     defaultProps: { lines: ["Every big channel", "started with one video", "This is mine"], framesPerLine: 45 } }),
   def({ id: "Typewriter", styles: [2, 24], component: Typewriter, schema: typewriterSchema, duration: (p) => Math.ceil(p.text.length / p.charsPerFrame) + 45,
@@ -122,9 +125,9 @@ export const TEMPLATES: TemplateDef[] = [
 
   // ── Social, branding & UI ─────────────────────────────────────────────
   def({ id: "SubscribeCTA", styles: [82], component: SubscribeCTA, schema: subscribeCtaSchema, duration: () => 130,
-    defaultProps: { channelName: theme.channelName, tagline: "New motion graphics every week", subscribeText: "Subscribe", subscribedText: "Subscribed", likeText: "Like" } }),
+    defaultProps: (b) => ({ channelName: b.name, tagline: b.platform === "youtube" ? b.handle : "New motion graphics every week", subscribeText: b.follow, subscribedText: b.following, likeText: "Like", buttonColor: b.color }) }),
   def({ id: "EndScreen", styles: [83], component: EndScreen, schema: endScreenSchema, duration: () => 600,
-    defaultProps: { heading: "Watch next", channelName: theme.channelName, videoLabels: ["Latest video", "Best for you"] } }),
+    defaultProps: (b) => ({ heading: "Watch next", channelName: b.name, videoLabels: ["Latest video", "Best for you"], ctaText: b.cta, accentColor: b.color }) }),
   def({ id: "ChatStory", styles: [85, 86], component: ChatStory, schema: chatStorySchema, duration: (p) => 10 + p.messages.length * p.framesPerMessage + 45,
     defaultProps: { contactName: "Rafi", status: "online", framesPerMessage: 28, messages: [
       { from: "them", text: "Bro, how do you make those animations? 😮" },
@@ -211,7 +214,7 @@ export const TEMPLATES: TemplateDef[] = [
   def({ id: "VoxelWorld", styles: [62, 66], component: VoxelWorld, schema: voxelWorldSchema, duration: () => 240,
     defaultProps: { title: "Build your world", subtitle: "Block by block", seed: "creator" } }),
   def({ id: "DeviceMockup", styles: [63, 86], component: DeviceMockup, schema: deviceMockupSchema, duration: (p) => 40 + p.feed.length * 25 + 50,
-    defaultProps: { appTitle: "My Channel", caption: "Watch on any screen", feed: ["Episode 1: Start", "Top 5 tools", "Behind the scenes", "Q&A live", "What's next"] } }),
+    defaultProps: (b) => ({ appTitle: b.name, caption: "Watch on any screen", feed: ["Episode 1: Start", "Top 5 tools", "Behind the scenes", "Q&A live", "What's next"] }) }),
   def({ id: "ExplodedView", styles: [68], component: ExplodedView, schema: explodedViewSchema, duration: () => 150,
     defaultProps: { title: "Inside a smartphone", layers: ["Glass", "Display", "Battery", "Logic board", "Back cover"] } }),
   def({ id: "ClayScene", styles: [64, 99], component: ClayScene, schema: claySceneSchema, duration: () => 180,

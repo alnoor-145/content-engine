@@ -1,5 +1,7 @@
 # Content Engine
 
+**Channels:** YouTube [Mr N Boy (@SubscribeYt_1)](https://www.youtube.com/@SubscribeYt_1) · Facebook [Al NUR](https://www.facebook.com/share/1HYnZ8SaYY/)
+
 My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook** (feed and Reels). Every video is code, built with [Remotion](https://www.remotion.dev) (React → MP4). Write one JSON file and render the same video for every platform.
 
 ## What's inside
@@ -18,7 +20,8 @@ My motion graphics engine for **YouTube** (long-form and Shorts) and **Facebook*
   | Illustration & photo | `PaperCutout`, `PixelArt`, `LottieScene`, `PhotoFX` (Ken Burns, punch-in, duotone, halftone, 2.5D parallax) |
   | Audio | `AudioWave` (podcast audiogram that reacts to your voiceover) |
 
-- **4 output formats** for every template: YouTube 16:9 (1920×1080), Shorts/Reels 9:16 (1080×1920), Facebook 1:1 (1080×1080) and Facebook feed 4:5 (1080×1350)
+- **5 output formats** for every template: YouTube 16:9 (1920×1080), YouTube Shorts 9:16, Facebook Reels 9:16 (1080×1920), Facebook 1:1 (1080×1080) and Facebook feed 4:5 (1080×1350)
+- **Automatic channel branding**: YouTube formats show **Mr N Boy** ([@SubscribeYt_1](https://www.youtube.com/@SubscribeYt_1)) with a red *Subscribe* button; Facebook formats show **Al NUR** ([Facebook page](https://www.facebook.com/share/1HYnZ8SaYY/)) with a blue *Follow* button. Edit `BRANDS` in `src/brand/theme.ts` to change them.
 - **Bangla (বাংলা) support**: Hind Siliguri font loaded automatically, and per-letter effects never break conjuncts (যুক্তাক্ষর)
 - **[Style catalog](research/STYLE_CATALOG.md)**: 100 animation and motion graphics styles, what kind of video each fits, and whether the engine has it yet
 - **[GitHub engines research](research/GITHUB_ENGINES.md)**: the open-source projects this builds on and what to add next
@@ -34,13 +37,13 @@ npm run dev          # opens Remotion Studio: preview and tweak every template l
 ## Make a video
 
 ```powershell
-npm run new -- top-5-tools ListReveal youtube short fbFeed
+npm run new -- top-5-tools ListReveal youtube short fbReel fbFeed
 # edit content/videos/top-5-tools/video.json ("props" overrides the template defaults)
 npm run render -- top-5-tools          # renders every format into out/top-5-tools/
 npm run render -- top-5-tools short    # or just one format
 ```
 
-Or render a template straight from Studio. Composition IDs are `<Format>-<Template>`, for example `Short-GlitchText` or `FB-Feed-BarChart`.
+Or render a template straight from Studio. Composition IDs are `<Format>-<Template>`, for example `Short-GlitchText`, `FB-Reel-SubscribeCTA` or `FB-Feed-BarChart`.
 
 See [`content/videos/002-bangla-demo`](content/videos/002-bangla-demo/video.json) for a Bangla example.
 

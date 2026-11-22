@@ -18,5 +18,41 @@ export const theme = {
     bangla: `${FONT_FAMILIES.bangla}, 'Nirmala UI', sans-serif`,
     mono: "'JetBrains Mono', Consolas, monospace",
   },
-  channelName: "My Channel",
+  channelName: "Mr N Boy",
 } as const;
+
+// Per-platform channel identity. YouTube formats use `youtube`, Facebook formats use `facebook`
+// (see `platform` in src/formats.ts), so one video shows the right name on each platform.
+export type Brand = {
+  platform: "youtube" | "facebook";
+  name: string;
+  handle: string;
+  url: string;
+  follow: string; // button text before click
+  following: string; // button text after click
+  cta: string; // end screen call to action
+  color: string; // platform button color
+};
+
+export const BRANDS: Record<Brand["platform"], Brand> = {
+  youtube: {
+    platform: "youtube",
+    name: "Mr N Boy",
+    handle: "@SubscribeYt_1",
+    url: "https://www.youtube.com/@SubscribeYt_1",
+    follow: "Subscribe",
+    following: "Subscribed",
+    cta: "SUBSCRIBE",
+    color: "#FF0000",
+  },
+  facebook: {
+    platform: "facebook",
+    name: "Al NUR",
+    handle: "Al NUR",
+    url: "https://www.facebook.com/share/1HYnZ8SaYY/",
+    follow: "Follow",
+    following: "Following",
+    cta: "FOLLOW",
+    color: "#1877F2",
+  },
+};

@@ -6,12 +6,12 @@ import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const FORMAT_IDS = { youtube: "YouTube", short: "Short", fbSquare: "FB-Square", fbFeed: "FB-Feed" };
+const FORMAT_IDS = { youtube: "YouTube", short: "Short", fbReel: "FB-Reel", fbSquare: "FB-Square", fbFeed: "FB-Feed" };
 const REMOTION_CLI = join("node_modules", "@remotion", "cli", "remotion-cli.js");
 
 const [slug, onlyFormat] = process.argv.slice(2);
 if (!slug) {
-  console.error("Usage: npm run render -- <slug> [youtube|short|fbSquare|fbFeed]");
+  console.error("Usage: npm run render -- <slug> [youtube|short|fbReel|fbSquare|fbFeed]");
   process.exit(1);
 }
 
